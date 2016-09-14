@@ -190,7 +190,7 @@ The Steps:
 \end{itemize}
 
 \section{Initialize the camera}
-\large \textbf{In the control room}
+{\large \textbf{In the control room}}
 \begin{itemize}
 \item []
 \end{itemize}
@@ -210,16 +210,15 @@ The Steps:
 	\begin{itemize}
 		\item {\large \textbf{Shooting Calibration Images: Flats}}
 		\begin{itemize}
-			\item \large \textbf{In Maxim DL}
+			\item {\large \textbf{In Maxim DL}}
 			\begin{itemize}
 				\item Open the camera control window, and click the expose tab.
 				\item When we shoot flats, we aim to get 10 five second images in each filter.
-				\item Set Maxim DL to ``No Calibration'' so the frame type can be set to Flat
-
-				\item When we shoot Flats, we aim for a average pixel count of 35,000. This can be seen by the Average Pixel Count in the information window. If the pixel count is not at 35,000, up the exposure time until 35,000 is reached.
+				\item Check that Maxim DL to ``No Calibration'' (look under ``Options'' in the camera control window) so the frame type can be set to Flat.
+				\item When we shoot Flats, we aim for a average pixel count of 35,000 (except in the B filter). This can be seen by the Average Pixel Count in the information window. If the pixel count is not at 35,000, up the exposure time until 35,000 is reached. In the B filter a more realistic count rate is 10,000--15,000 counts; if those are the counts plan to take twice as many flats in the B filter.
 				\item To find the Information Window, go to the view tab and click on Information Window. Change the mode to area.
-				\item Take a few test images to ensure the count is where we want it to be before shooting the whole sequence.
-				\item Click ``Auto Save'' and shoot the sequence.
+				\item Take a few test images to ensure the count is where we want it to be before shooting the whole sequence. Typical exposure times are 5-15 seconds for the I filter, 10-20 seconds for R, and 30 for V.
+				\item Click ``Auto Save'', set up the sequence, and then shoot the sequence.
 			\end{itemize}
 		\end{itemize}
 	\end{itemize}
@@ -310,9 +309,12 @@ The Steps:
 	\begin{itemize}
 		\item Go to nova.astrometry.net. Upload the image with the following settings.
 		\begin{itemize}
-			\item Units: arcseconds per pixel (Under advanced settings)
-			\item lower bound: 0.5 (Under advanced settings)
-			\item upper bound: 0.6 (Under advanced settings)
+			\item Scale: custom
+			\begin{itemize}
+				\item Units: arcseconds per pixel (Under advanced settings)
+				\item lower bound: 0.5 (Under advanced settings)
+				\item upper bound: 0.6 (Under advanced settings)
+			\end{itemize}
 			\item Check the box marked CRPIX center. (Guess where this is)
 			\item Check the box marked use SExtractor.
 			\item Occasionally, some of these options do not appear. To remedy this, simply scroll up, close the advanced options, and open them again. The desired options should appear.
@@ -354,7 +356,7 @@ It should go without saying that this is a particularly important part of the pr
 		\end{enumerate}
 		\item Click on ``Continuous'' and then ``start''
 	\end{itemize}
-	\item \large \textbf{Adjusting the focus in DFM TCS}
+	\item {\large \textbf{Adjusting the focus in DFM TCS}}
 	\begin{itemize}
 		\item Go to the menu Telescope $\rightarrow$ Misc
 		\item Click on the Focus/Harmonic tab.
@@ -364,8 +366,16 @@ It should go without saying that this is a particularly important part of the pr
 			\begin{itemize}
 				\item \large \textbf{WARNING:} Do not change the focus by more than 20 at a time. Do not set the focus to exactly 3000 or exceed 3700. This could freeze DFM TCS, which means everything would need to be shut down.
 			\end{itemize}
-			\item Once you have the FWHM as small as possible, note it and the final focus setting somewhere, preferably the observing log.
-			\item Once you have finished focusing the telescope, disconnect the telescope from The Sky.
+		\end{itemize}
+	\end{itemize}
+	\item {\large \textbf{When you are done focusing}}
+	\begin{itemize}
+		\item Once you have the FWHM as small as possible, note it and the final focus setting somewhere, preferably the observing log.
+		\item Once you have finished focusing the telescope, disconnect the telescope from The Sky.
+		\item In the Maxim DL
+		\begin{itemize}
+			\item Camera Control window, click ``Stop''.
+			\item \emph{Uncheck the ``subframe'' box}.
 		\end{itemize}
 	\end{itemize}
 \end{itemize}
@@ -412,38 +422,54 @@ Post your log to the \href{(http://astronomy.mnstate.edu/Feder_Observatory/}{Fed
 \chapter{Shutdown}\label{ch:shutdown}
 At the end of the night, shut the whole thing down or face the wrath of people who are concerned for the longevity of the observatory if it is mistreated.
 \begin{itemize}
-	\item To return the telescope to Zenith
+	\item {\large \textbf{In the control room}}
 	\begin{itemize}
-		\item IN DFM TCS, go to Telescope $\rightarrow$ Rates, and set the RA rate to 0.00. Check to make sure the RA is not changing.
-		\item in DFM TCS, go to Telescope $\rightarrow$ Movement $\rightarrow$ Offset/Zenith and click ``Set Zenith Position'', then ``Apply'', then ``Start Slew''.
+		\item Return the telescope to Zenith:
+			\begin{itemize}
+				\item IN DFM TCS, go to Telescope $\rightarrow$ Rates, and set the RA rate to 0.00. Check to make sure the RA \emph{is changing}.
+				\item in DFM TCS, go to Telescope $\rightarrow$ Movement $\rightarrow$ Offset/Zenith and click ``Set Zenith Position'', then ``Apply'', then ``Start Slew''.
+			\end{itemize}
+		\item Return the Dome to its home position:
+			\begin{itemize}
+				\item Change Dome Track to ``Home''. To do this, in DFM, go to the menu Telescope $\rightarrow$ Misc $\rightarrow$ switches. Set ``Auto Dome'' to Home then Apply.
+				\item Wait until the dome azimuth displayed in DFM TCS is 300 degrees, the home position of the dome.
+				\item Click the colored tab next to \emph{Dome} so that it is red. Apply, then close the switches window.
+				\item Flip the ``Auto Dome'' switch on the MDC from ``On'' to ``Off''
+			\end{itemize}
+		\item Depress the ``Halt Motors Button'' on the MDC.
+		\item Turn the MDC toggle switch off.
+		\item Quit DFM TCS.
+		\item In the Maxim DL Camera Control window, turn off camera cooler and disconnect the camera:
+			\begin{itemize}
+				\item Click the ``Setup'' tab.
+				\item Turn the cooler off.
+				\item Disconnect the camera.
+			\end{itemize}
+		\item Quit Maxim DL.
+		\item Turn the filter wheel off.
 	\end{itemize}
+
+
 \end{itemize}
 \begin{itemize}
 	\item \large \textbf{In the Dome}
 	\begin{itemize}
-	\item Disconnect the telescope from the camera.
-	\item Replace the cover on the telescope.
-	\item Close the bottom part of the dome.
-	\item Close the top part of the dome.
-	\item Unplug the camera. Bring power supply inside.
-	\item Turn off the terminal power supply.
-	\item Turn off the lights.
+		\item Replace the cover on the telescope.
+		\item Close the bottom part of the dome.
+		\item Close the top part of the dome.
+		\item Unplug the camera. Bring power supply inside.
+		\item Turn off the terminal power supply.
+		\item Turn off the lights.
 	\end{itemize}
 
-	\item \large \textbf{In the control room}
+	\item {\large \textbf{In the control room}}
 	\begin{itemize}
-		\item Change Dome Track to ``Home''. To do this, in DFM, go to the menu Telescope $\rightarrow$ Misc $\rightarrow$ switches. Set ``Auto Dome'' to Home.
-		\item Flip the ``Auto Dome'' switch on the MDC from ``On'' to ``Off''
 		\item Ensure all the images have transferred to the server.
-		\item Depress the ``Halt Motors Button''
-		\item Turn the filter wheel off.
-		\item Turn the MDC toggle switch off.
-		\item Exit DFM TCS.
 		\item Shutdown the PC.
 		\item Turn off surge protectors.
 	\end{itemize}
 
-\item \large \textbf{As you leave}
+\item {\large \textbf{As you leave}}
 \begin{itemize}
 	\item Turn on the outside lights.
 \end{itemize}
@@ -452,19 +478,21 @@ At the end of the night, shut the whole thing down or face the wrath of people w
 \chapter{Troubleshooting}
 Occasionally, you will run into some errors. Hopefully, the solution to your problem can be found in this section.
 
-\textbf{Telescope not returning to zenith}
+\noindent\textbf{Telescope not returning to zenith}
 \begin{itemize}
 	\item This seems to happen most frequently when the computer has to be shut down improperly for one reason or another. The following steps are excerpted from an email from Dr. Craig.
-	\item Use the hand paddle to steer the dome back to vertical, using the bubble level from the toolkit in the control room to get pretty close to vertical.
+	\item Use the hand paddle to steer the telescope back to vertical, using the bubble level from the toolkit in the control room to get pretty close to vertical. Shut down DFM TCS and reopen it.
 	\item Alternatively: You can turn on the computer and TCS and, if the dome isn’t blocking the scope, turn on tracking, take an image, upload to astrometry.net to get the RA/Dec, and use it to initialize the telescope position. Once the computer knows which way the telescope is pointing you can get it back to zenith like normal.
 \end{itemize}
-\textbf{Error = 1 on filter wheel}
+
+\noindent\textbf{Error = 1 on filter wheel}
 \begin{itemize}
 	\item The manufacturer's website claims that this error appears when the filter needs to be cleaned. It also appears when the filter wheel cannot move. Check the filter wheel and see if it is being blocked. It is also not unlikely that it is lacking power.
 \end{itemize}
-\textbf{Dome not tracking}
+\noindent \textbf{Dome not tracking}
 \begin{itemize}
 	\item Ensure that the ``Auto Dome'' switch on the MDC is turned up. If you make this mistake enough, you might be Andy Block.
+	\item Check that the dome is in the correct home position when you start up. The control system assumes that the dome is actually at azimuth 300$^\circ$ when it starts.
 \end{itemize}
 
 
