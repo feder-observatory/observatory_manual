@@ -53,7 +53,7 @@ The Steps:
 		\item Take darks, flats, and bias images.
 		\item Initialize telescope pointing
 	\end{itemize}
-	\item Focus the camera and take images. See Chapters \ref{ch:4} and \ref{ch:shooting}.
+	\item Focus the camera and take images. See Chapters \ref{ch:focusing} and \ref{ch:shooting}.
 	\item Make the Observing Log. See Chapter \ref{ch:log}
 	\item Shutdown. See Chapter \ref{ch:shutdown}
 	\begin{itemize}
@@ -76,13 +76,13 @@ The Steps:
 \begin{itemize}
 	\item \textbf{Turn on the surge protectors}
 	\begin{itemize}
-		\item Turn on the surge protector behind the Motor Driver Chassis (MDC). This is the big blue box. It is very hard to miss.
-		\item Turn on the surge protector behind the computer monitors
+		\item Turn on the surge protectors on top of the Motor Driver Chassis (MDC). This is the big blue box. It is very hard to miss.
 	\end{itemize}
 	\item \textbf{Start the PC}
 	\begin{itemize}
 		\item Open the lower door on the MDC and boot the computer with the rocker switch.
-		\item Use the ``owner'' account. Password: renwo
+		\item Use the ``owner'' account. Password: \texttt{renwo}
+		\item Close lower door.
 	\end{itemize}
 	\item \textbf{Turn the MDC on}
 	\begin{itemize}
@@ -298,7 +298,39 @@ The Steps:
 		\item In the dome, there is a switch that needs to be plugged in. It is opposite the part of the dome that opens. Plug it in and give it a flip. Another person should be simultaneously opening the lower part of the dome by cranking the crank. We could figure out a way to automate this, but you need the exercise anyway.
 	\end{itemize}
 \end{itemize}
-\subsection{Focusing the Telescope}
+\subsection{Pointing the Telescope}
+\begin{itemize}
+	\item \large \textbf{In Maxim DL}
+	\begin{itemize}
+		\item Take a 15 second exposure in the R filter. Save the image to the desktop.
+	\end{itemize}
+	\item \large \textbf{In Google Chrome}
+	\begin{itemize}
+		\item Go to nova.astrometry.net. Upload the image with the following settings.
+		\begin{itemize}
+			\item Units: arcseconds per pixel (Under advanced settings)
+			\item lower bound: 0.5 (Under advanced settings)
+			\item upper bound: 0.6 (Under advanced settings)
+			\item Check the box marked CRPIX center. (Guess where this is)
+			\item Check the box marked use SExtractor.
+			\item Occasionally, some of these options do not appear. To remedy this, simply scroll up, close the advanced options, and open them again. The desired options should appear.
+		\end{itemize}
+		\item Upload the image and go to the results page. You will need to wait a few minutes for the results.
+	\end{itemize}
+	\newpage
+	\item \large \textbf{In DFM TCS}
+	\begin{itemize}
+		\item Go to the menu Telescope $\rightarrow$ Initialization. Click the ``Telescope Position'' Tab.
+		\item Enter the RA and Dec from astrometry.net.
+		\item Set the Epoch to 2000.0
+		\item Click ``Apply''.
+	\end{itemize}
+\end{itemize}
+
+\newpage
+
+\chapter{Focusing the Telescope}
+\label{ch:focusing}
 It should go without saying that this is a particularly important part of the procedure. An improperly focused telescope results in bad images, and bad images results in frustration. Frustration leads to anger, anger leads to hate, and hate leads to the dark side.
 
 \begin{itemize}
@@ -335,38 +367,6 @@ It should go without saying that this is a particularly important part of the pr
 		\end{itemize}
 	\end{itemize}
 \end{itemize}
-\subsection{Pointing the Telescope}
-\begin{itemize}
-	\item \large \textbf{In Maxim DL}
-	\begin{itemize}
-		\item Take a 15 second exposure in the R filter. Save the image to the desktop.
-	\end{itemize}
-	\item \large \textbf{In Google Chrome}
-	\begin{itemize}
-		\item Go to nova.astrometry.net. Upload the image with the following settings.
-		\begin{itemize}
-			\item Units: arcseconds per pixel (Under advanced settings)
-			\item lower bound: 0.5 (Under advanced settings)
-			\item upper bound: 0.6 (Under advanced settings)
-			\item Check the box marked CRPIX center. (Guess where this is)
-			\item Check the box marked use SExtractor.
-			\item Occasionally, some of these options do not appear. To remedy this, simply scroll up, close the advanced options, and open them again. The desired options should appear.
-		\end{itemize}
-		\item Upload the image and go to the results page. You will need to wait a few minutes for the results.
-	\end{itemize}
-	\newpage
-	\item \large \textbf{In DFM TCS}
-	\begin{itemize}
-		\item Go to the menu Telescope $\rightarrow$ Initialization. Click the ``Telescope Position'' Tab.
-		\item Enter the RA and Dec from astrometry.net.
-		\item Set the Epoch to 2000.0
-		\item Click ``Apply''.
-	\end{itemize}
-\end{itemize}
-
-\newpage
-
-
 
 \chapter{Shooting}\label{ch:shooting}
 
