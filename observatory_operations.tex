@@ -103,14 +103,6 @@ The Steps:
 	\end{itemize}
 \end{itemize}
 
-% \begin{figure}
-% 	\includegraphics[width=4in,angle=-90,origin=c]{IMG_6752.JPG}
-% 	\caption{Filter Wheel}
-% \end{figure}
-
-% \begin{figure}
-% 	\includegraphics[width=4in,angle=-90,origin=c]{IMG_6751.JPG}
-% \end{figure}
 \newpage
 
 
@@ -210,7 +202,7 @@ The Steps:
 		\item Turn on the coolers by clicking the ``On'' button in the ``Coolers'' section.
 		\item In the ``Camera 1'' section, click ``Cooler'' to set the temperature.
 		\begin{itemize}
-			\item The temperature should be set to roughly 40 degrees below the ambient temperature.
+			\item The temperature should be set to roughly -30$^\circ$C or lower. If the camera is unable to reach the set point, a box will pop up asking if you want to change the set point to something warmer; say Yes/OK if that happens.
 			\item Setting the temperature too low is better than too high.
 		\end{itemize}
 		\item {\large \textbf{Wait for the camera to reach the set point before taking calibration or science images.}}
@@ -353,6 +345,8 @@ The Steps:
 \chapter{Focusing the Telescope}
 \label{ch:focusing}
 It should go without saying that this is a particularly important part of the procedure. An improperly focused telescope results in bad images, and bad images results in frustration. Frustration leads to anger, anger leads to hate, and hate leads to the dark side.
+
+To estimate the focus value, use this formula: $f \approx 1.32 T + 2756$, where $T$ is the air temperature in the dome (in Fahrenheit) and $f$ is the approixmate focus value to use in DFM TCS below. Use this \emph{only} if the initial focus is very bad.
 
 \begin{itemize}
 	\item Open The Sky and connect it to the telescope by clicking the green telescope in the toolbar.
@@ -512,6 +506,21 @@ Occasionally, you will run into some errors. Hopefully, the solution to your pro
 	\item Ensure that the ``Auto Dome'' switch on the MDC is turned up. If you make this mistake enough, you might be Andy Block.
 	\item Check that the dome is in the correct home position when you start up. The control system assumes that the dome is actually at azimuth 300$^\circ$ when it starts.
 \end{itemize}
+
+\chapter{Figures}
+
+The figures below show several of the pieces of equipment in the observatory and control room.
+
+\begin{figure}
+	\begin{minipage}{0.5 \linewidth}
+		\includegraphics[width=2in,origin=c]{IMG_6751.JPG}
+		\caption{Power strips}
+	\end{minipage}
+	\begin{minipage}{0.5 \linewidth}
+		\includegraphics[width=2in,origin=c]{IMG_6752.JPG}
+		\caption{Filter Wheel}
+	\end{minipage}
+\end{figure}
 
 
 \end{document}
