@@ -82,24 +82,16 @@ The Steps:
 	\begin{itemize}
 		\item Open the lower door on the MDC and boot the computer with the rocker switch.
 		\item Close lower door.
-		\item Use the ``owner'' account. Password: \texttt{renwo}
 	\end{itemize}
 	\item \textbf{Turn the MDC on}
 	\begin{itemize}
 		\item Turn the switch labelled ``MTR DRIVER CHASSIS'' on.
-	\end{itemize}
-	\item \textbf{Turn the filter wheel on}
-	\begin{itemize}
-		\item The filter wheel display will typically display ``Home'' to indicate that there is no filter in place.
 	\end{itemize}
 	\item \textbf{In the Dome} \\
 	\noindent \textbf{The camera power supply is kept in the control room; bring it with you to the dome.}
 	\begin{itemize}
 		\item Plug in the camera.
 		\item Attach the brick to the bottom of the telescope.
-	\end{itemize}
-	\begin{itemize}
-		\item Windows XP is old and slow (Like a certain lovable professor). Because of this, we turn of the Task Manager to ensure we can kill any process that is bogging it down too much.
 	\end{itemize}
 \end{itemize}
 
@@ -129,7 +121,7 @@ The Steps:
 		\item Click ``Login'' for physics.mnstate.edu. Enter your username and password.
 		\item If you do not have an account, speak with one of the professors listed in Table \ref{tbl-phone-numbers}
 		\item On the local computer, create a folder for the night in the data folder. It should be named for the date you are observing on following the \texttt{yyyy-mm-dd} format. Example: February 29th, 2096 would be \texttt{2096-02-29}.
-		\item Navigate to the feder data upload folder on the server, and create a folder following the same naming convention.
+		\item Navigate to the feder data upload folder (\texttt{/data/feder/data/upload}) on the server, and create a folder following the same naming convention.
 		\item In WinSCP,  into the folder for the night you are observing on \emph{both} the local computer and the server.
 		\item To continuously sync the server and local computer, click the button with the green and red arrows in the toolbar to ``Keep remote computer up to date''.
 		\item You should probably push the button to minimize the sync window. This keeps the screen from looking too cluttered.
@@ -137,8 +129,8 @@ The Steps:
 	\item Start the software (links are on the desktop)
 	\begin{itemize}
 		\item DFM TCS
-		\item The Sky
-		\item Maxim DL
+		\item The Sky X
+		\item Maxim DL -- For now, right click and "Run as Administrator"
 	\end{itemize}
 	%\item Enable the motors. \textbf{\large{\emph{Do not do this immediately if you are shooting calibration images first}}}
 	%\begin{itemize}
@@ -259,12 +251,12 @@ The Steps:
 				\item In DFM TCS
 				\begin{itemize}
 					\item Go to the menu Telescope $\rightarrow$ rates.
-					\item Set the ``RA Rate'' to 15
+					\item Set the ``RA Rate'' to 15.05
 					\item Click ``Apply''
 				\end{itemize}
 				\item On the MDC (Motor Driver Chassis)
 				\begin{itemize}
-					\item Push the ``Halt Motors Button'' so that it is in the out position.
+					\item Make sure the ``Halt Motors Button'' so is in the out position.
 				\end{itemize}
 				\end{itemize}
 				\begin{itemize}
@@ -281,7 +273,7 @@ The Steps:
 						\begin{itemize}
 							\item Go to the menu Telescope $\rightarrow$ Misc
 							\item Click the switches tab
-							\item Click the colored tab next to \emph{Auto Dome} to turn it on. The tab should be green
+							\item Click the colored tab next to \emph{Dome} to turn it on. The tab should be green
 							\item Click the colored tab next to \emph{Dome} to turn it ``Track''. The tab should be green.
 							\item Click ``Apply''
 						\end{itemize}
@@ -289,13 +281,13 @@ The Steps:
 					\begin{itemize}
 						\item On the MDC
 						\begin{itemize}
-							\item Flip the ``Auto Dome'' switch up.
+							\item Make sure the ``Auto Dome'' switch is up.
 						\end{itemize}
 					\end{itemize}
 					\begin{itemize}
 						\item In DFM TCS
 						\begin{itemize}
-							\item Make sure the ``Dome'' indicator is green.
+							\item Make sure the ``Auto Dome'' indicator is green and "Dome Mode" is "TRACK"
 						\end{itemize}
 					\end{itemize}
 				\end{itemize}
@@ -316,7 +308,7 @@ The Steps:
 	\end{itemize}
 	\item \large \textbf{In Google Chrome}
 	\begin{itemize}
-		\item Go to nova.astrometry.net. Under advanced settings, choose these:
+		\item Go to \texttt{nova.astrometry.net}. Under advanced settings, choose these:
 		\begin{itemize}
 			\item \textbf{Scale}: custom
 			\begin{itemize}
@@ -325,7 +317,8 @@ The Steps:
 				\item \textbf{upper bound}: 0.6 (Under advanced settings)
 			\end{itemize}
 			\item Check the box marked \textbf{CRPIX center}. (Guess where this is)
-			\item Check the box marked \textbf{use SExtractor}.
+			\item Change "Downsample" to 4.
+			\item If the initial attempt to solve fails, try checking the box marked \textbf{use SExtractor}.
 			\item Occasionally, some of these options do not appear. To remedy this, simply scroll up, close the advanced options, and open them again. The desired options should appear.
 		\end{itemize}
 		\item Upload the image and go to the results page. You will need to wait a few minutes for the results.
@@ -334,8 +327,8 @@ The Steps:
 	\item \large \textbf{In DFM TCS}
 	\begin{itemize}
 		\item Go to the menu Telescope $\rightarrow$ Initialization. Click the ``Telescope Position'' Tab.
-		\item Enter the RA and Dec from astrometry.net.
-		\item Set the Epoch to 2000.0
+		\item Enter the RA (in hours, minutes, seconds) and Dec (Degrees, minutes, seconds) from astrometry.net.
+		\item Set the ``Equinox'' to 2000.0
 		\item Click ``Apply''.
 	\end{itemize}
 \end{itemize}
@@ -349,21 +342,21 @@ It should go without saying that this is a particularly important part of the pr
 To estimate the focus value, use this formula: $f \approx 1.32 T + 2756$, where $T$ is the air temperature in the dome (in Fahrenheit) and $f$ is the approixmate focus value to use in DFM TCS below. Use this \emph{only} if the initial focus is very bad.
 
 \begin{itemize}
-	\item Open The Sky and connect it to the telescope by clicking the green telescope in the toolbar.
+	\item Open The Sky and connect it to the telescope by clicking the ``Telescope'' tab on the left bar, then go to setup, and connect to telescope.
 	\item Slew to a magnitude 5-6 star.
 	\begin{itemize}
 		\item In The Sky, pick a star near your location. Clicking on it will show its magnitude. If the magnitude is between 5 and 6, click the green telescope button to slew to it.
 	\end{itemize}
-	\item {\large \textbf{In Maxim DL}}
+	\item {\large \textbf{In Maxim DL} (in the Expose tab)}
 	\begin{itemize}
 		\item Reset to full frame (i.e. make sure Subframe ``On'' option is \emph{un}checked). This may not be needed.
-		\item Take a 0.1 second exposure in the R filter.
+		\item Take a 1 second exposure in the R filter.
 	\end{itemize}
 	\begin{itemize}
 		\item Once you have confirmed that the star is in the full frame, you have two options:
 		\begin{enumerate}
 			\item Turn on subframe and click the ``Auto Subframe''. You can confirm the position of the star by mousing over it and seeing if the RA and Dec match. The subframe box is in the same window used to take images, near the center. There is an option for auto subframe, which tries to automatically find the star, or mouse subframe, where you select the star yourself.
-			\item Turn on subframe, click ``Mouse'', and selecting the star manually.
+			\item (MOVE TO TROUBLESHOOTING) Turn on subframe, click ``Mouse'', and selecting the star manually.
 		\end{enumerate}
 		\item Click on ``Continuous'' and then ``Start''
 	\end{itemize}
@@ -374,19 +367,16 @@ To estimate the focus value, use this formula: $f \approx 1.32 T + 2756$, where 
 		\item Make sure the focus is in roughly the right range. You can calculate
 		\begin{itemize}
 			\item \emph{In Maxim DL}, take a look at the Full Width Half Max (FWHM). We want the FWHM to be as close to 4.5 pixels as possible. 5 - 6 pixels is acceptable. Larger values than this should be avoided if possible; some times it isn't possible, though.
-			\item Change the focus in increments of 10 until you are close to the range you want. Then change in increments of 5.
-			\begin{itemize}
-				\item {\large \textbf{WARNING:}} Do not change the focus by more than 20 at a time. Do not set the focus to exactly 3000 or exceed 3700. This could freeze DFM TCS, which means everything would need to be shut down.
-			\end{itemize}
+			\item Change the focus in increments of 50 until you are close to the range you want. Then change in increments of 25.
 		\end{itemize}
 	\end{itemize}
 	\item {\large \textbf{When you are done focusing}}
 	\begin{itemize}
 		\item Once you have the FWHM as small as possible, note it and the final focus setting somewhere, preferably the observing log.
-		\item Once you have finished focusing the telescope, disconnect the telescope from The Sky.
 		\item In Maxim DL
 		\begin{itemize}
 			\item Camera Control window, click ``Stop''. (If it won't stop try the next step and then stopping.)
+			\item Change the mode back to single.
 			\item \emph{Uncheck the ``subframe'' box}.
 		\end{itemize}
 	\end{itemize}
@@ -439,16 +429,14 @@ At the end of the night, shut the whole thing down or face the wrath of people w
 		\item Return the telescope to Zenith:
 			\begin{itemize}
 				\item IN DFM TCS, go to Telescope $\rightarrow$ Rates, and set the RA rate to 0.00. Check to make sure the RA \emph{is changing}.
-				\item in DFM TCS, go to Telescope $\rightarrow$ Movement $\rightarrow$ Offset/Zenith and click ``Set Zenith Position'', then ``Apply'', then ``Start Slew''.
+				\item in DFM TCS, go to Telescope $\rightarrow$ Movement $\rightarrow$ Offset/Zenith and click the ``Apply'' next to ``Slew to Zenith Position'', then ``Start Slew''.
 			\end{itemize}
 		\item Return the Dome to its home position:
 			\begin{itemize}
-				\item Change Dome to ``Home''. To do this, in DFM, go to the menu Telescope $\rightarrow$ Misc $\rightarrow$ Switches. Set ``Auto Dome'' to Home then Apply.
+				\item Change Dome to ``Home''. To do this, in DFM, go to the menu Telescope $\rightarrow$ Misc $\rightarrow$ Switches. Set ``Dome'' to Home then Apply.
 				\item Wait until the dome azimuth displayed in DFM TCS is 300 degrees, the home position of the dome.
 				\item Click the colored tab next to \emph{Auto Dome} so that it is ``Off'' (red). Apply, then close the switches window.
-				\item Flip the ``Auto Dome'' switch on the MDC from ``On'' to ``Off''
 			\end{itemize}
-		\item Depress the ``Halt Motors Button'' on the MDC.
 		\item Turn the MDC toggle switch off.
 		\item Quit DFM TCS.
 		\item In the Maxim DL Camera Control window, turn off camera cooler and disconnect the camera:
