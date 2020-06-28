@@ -1,0 +1,8 @@
+# Latex stuff
+*.aux
+*.fbd_latex
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
