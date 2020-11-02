@@ -1,5 +1,8 @@
 \documentclass[letterpaper, 12pt]{report}
 \usepackage{enumitem, hyperref, graphicx}
+\newcommand{\location}[1]{\noindent\large{\textbf{#1}}}
+\newcommand{\indome}{\location{In the dome}}
+\newcommand{\incontrol}{\location{In the control room}}
 
 \begin{document}
 \title{Observatory Operations Manual}
@@ -18,7 +21,7 @@
 		Control Room    & 218 - 498 - 2930        &                           \\
 		Dr. Cabanela    & 218 - 477 - 0444 (Home) & 218 - 477 - 2453 (Office) \\
 		Dr. Craig       & 218 - 443 - 5979 (Cell) & 218 - 477 - 2439 (Office) \\
-		Dr. Winkler     & 218 - 291 - 0853 (Home) & 218 - 477 - 2460 (Office) \\
+		% Dr. Winkler     & 218 - 291 - 0853 (Home) & 218 - 477 - 2460 (Office) \\
 		Campus Security & 218 - 477 - 2449        &                           \\
 	\end{tabular}
 \end{table}
@@ -35,7 +38,7 @@
 		\item [] Glyndon, MN 56547
 	\end{itemize}
 	\item Call MSUM Security (see \ref{tbl-phone-numbers})
-	\item Call Dr. Cabanela, Dr. Craig, or Dr. Winkler
+	\item Call Dr. Cabanela or Dr. Craig %, or Dr. Winkler
 \end{enumerate}
 
 \newpage
@@ -49,12 +52,13 @@ The Steps:
 \begin{itemize}
 	\item Turn on the power to the computers, telescope, and camera. See Chapter \ref{ch:power}.
 	\item Initialize the camera and telescope See Chapter \ref{ch:initialization}.
-	\begin{itemize}
-		\item Take darks, flats, and bias images.
-		\item Initialize telescope pointing
-	\end{itemize}
-	\item Focus the camera and take images. See Chapters \ref{ch:focusing} and \ref{ch:shooting}.
-	\item Make the Observing Log. See Chapter \ref{ch:log}
+	\item Load your ACP plan. See Chapter \ref{cha:using_acp_to_do_observations}.
+	% \begin{itemize}
+	% 	\item CHANGE: Take darks, flats, and bias images.
+	% 	\item CHANGE: Initialize telescope pointing
+	% \end{itemize}
+	% \item CHANGE: Focus the camera and take images. See Chapters \ref{ch:focusing} and \ref{ch:shooting}.
+	% \item Make the Observing Log. See Chapter \ref{ch:log}
 	\item Shutdown. See Chapter \ref{ch:shutdown}
 	\begin{itemize}
 		\item Shut down the camera
@@ -87,50 +91,83 @@ The Steps:
 	\begin{itemize}
 		\item Turn the switch labeled ``MTR DRIVER CHASSIS'' on.
 	\end{itemize}
-	\item \textbf{In the Dome} \\
-	\noindent \textbf{The camera power supply is kept in the control room; bring it with you to the dome.}
-	\begin{itemize}
-		\item Plug in power strip in the base of the telescope.
-	\end{itemize}
 \end{itemize}
 
+\large{\textbf{In the Dome}}
+\begin{itemize}
+	\item Plug in power strip in the base of the telescope.
+	\item Open the dome (unless you are doing dome flats next)
+	\begin{itemize}
+		\item Start opening the motorized top part before you start lowering the bottom part.
+		\item Lower the bottom part by turning the large handle counterclockwise; you do \emph{not} need to lower it all the way.
+		\item \emph{Unplug the dome after the top part is all the way open.}
+	\end{itemize}
+	\item Remove the "shower cap" from the telescope.
+	\item Plug in the USB extender cables (under dome floor near base of stairs).
+	\item \emph{Turn off the dome lights on your way out, including the lights under the dome floor if you turned them on.}
+\end{itemize}
+
+\large{\textbf{Back in the Control Room}} \emph{after} you have plugged in the camera/filter wheel/USB extender in the dome.
+\begin{itemize}
+	\item Plug both cables into the USB extender on the top of the blue MDC.
+	\item Check that Windows sees the camera and filter wheel.
+\end{itemize}
 \newpage
 
 
 
 \chapter{Initialization}\label{ch:initialization}
-\textbf{Note: This assumes that the calibration images are taken first, and not the science images. This does not have to be the case; if time is an issue based on what you are observing, calibration images can be taken later in the night. Either way, do not forget to take calibration images.} \\
+\textbf{This assumes you will be doing twilight flats (dusk or dawn), not dome flats. If you will be doing dome flats at the beginning of the night see the additional instructions in Chapter \ref{ch:manualcalib}.} \\
+
+\section{Initialize the camera -- start the camera cooling as soon as possible!}
+
+{\large \textbf{In the control room}}
+\begin{itemize}
+	\item \textbf{Connect Maxim DL to the camera}
+	\begin{itemize}
+		\item Open the camera control window.This button can be found on the toolbar. It can also be accessed by using the \texttt{CRTL+W} shortcut.
+		\item To connect Maxim DL to the camera, click the ``Connect'' button in the Camera Control Window
+		\item Turn on the coolers by clicking the ``On'' button in the ``Coolers'' section.
+		\item In the ``Camera 1'' section, click ``Cooler'' to set the temperature.
+		\begin{itemize}
+			\item The temperature should be set to -30$^\circ$C. If the camera is unable to reach the set point, a box will pop up asking if you want to change the set point to something warmer; say Yes/OK if that happens.
+			\item Setting the temperature too low is better than too high.
+		\end{itemize}
+		\item {\large \textbf{Wait for the camera to reach the set point before taking calibration or science images.}}
+	\end{itemize}
+\end{itemize}
 
 \section{Initialize the telescope}
 
-
+\noindent
 {\large\textbf{In the dome}}
 \begin{itemize}
-	\item Note the air temperature. It will be needed for estimating the focus.
-	\item Remove the cover from the telescope. Replace it with the the light diffuser from the table. This cover is only necessary for calibration images. Remove it before starting science images.
-	\item Position the lights needed for taking flats. There is a halogen light that should be placed on the step ladder and aimed at the white screen on the dome. The other is a lamp that should be clamped to the railing and also aimed at the screen.
-	\item \emph{Unless you are shooting Flats, be sure to turn off the lights when exiting the dome.}
+	\item Open the dome if you haven't yet (see previous chapter). Remember to unplug the dome after the slit is fully open.
+	\item \emph{Be sure to turn off the lights when exiting the dome.}
 \end{itemize}
 
+\noindent
 {\large\textbf{In the control room}}
 \begin{itemize}
-	\item \textbf{Set up WinSCP}
+	\item Start TCS (also called ``DFM TCS'' or ``DFM Engineering TCS'')
 	\begin{itemize}
-		\item Open WinSCP
-		\item Click ``Login'' for physics.mnstate.edu. Enter your username and password.
-		\item If you do not have an account, speak with one of the professors listed in Table \ref{tbl-phone-numbers}
-		\item On the local computer, create a folder for the night in the data folder. It should be named for the date you are observing on following the \texttt{yyyy-mm-dd} format. Example: February 29th, 2096 would be \texttt{2096-02-29}.
-		\item Navigate to the feder data upload folder (\texttt{/data/feder/data/upload}) on the server, and create a folder following the same naming convention.
-		\item In WinSCP,  into the folder for the night you are observing on \emph{both} the local computer and the server.
-		\item To continuously sync the server and local computer, click the button with the green and red arrows in the toolbar to ``Keep remote computer up to date''.
-		\item You should probably push the button to minimize the sync window. This keeps the screen from looking too cluttered.
+		\item It will take several seconds for TCS to finish opening.
+		\item When it is done opening, its window will move to the upper right corner of the screen.
+		\item Check that the zenith distance is 0.1 and the airmass is 1.
+		\item \textbf{Enable the Dome}
+		\begin{itemize}
+			\item Go to the menu Telescope $\rightarrow$ Misc
+			\item Click the switches tab
+			\item Click the colored box next to the bottom \emph{Dome} indicator to turn it on. The box should turn green and read ``Track''.
+			\item Click the colored box next to the top \emph{Dome} indicator to turn it on. The box should turn green and read ``On''.
+			\item Click "Apply"
+			\item Close the switches windows.
+		\end{itemize}
+		\item On the MDC: Check that the ``Auto Dome'' switch is up (it should always be left up).
+		\item In TCS: Make sure the ``Auto Dome'' indicator is green and the ``Dome Mode'' is ``TRACK''.
 	\end{itemize}
-	\item Start the software (links are on the desktop)
-	\begin{itemize}
-		\item DFM TCS
-		\item The Sky X
-		\item Maxim DL -- For now, right click and "Run as Administrator"
-	\end{itemize}
+	\item Start ``FocusMax 4''
+	\item Start ``ACP''
 	%\item Enable the motors. \textbf{\large{\emph{Do not do this immediately if you are shooting calibration images first}}}
 	%\begin{itemize}
 	%	\item \textbf{For the telescope}
@@ -154,16 +191,7 @@ The Steps:
 	%	\end{itemize}
 %	\end{itemize}
 %	\begin{itemize}
-%		\item \textbf{For the Dome}
-%		\begin{itemize}
-%			\item In DFM TCS
-%			\begin{itemize}
-%				\item Go to the menu Telescope $\rightarrow$ Misc
-%				\item Click the switches tab
-%				\item Click the colored tab next to \emph{Auto Dome} to turn it on. The tab should be green
-%				\item Click the colored tab next to \emph{Dome} to turn it on. The tab should be green.
-%				\item Click "Apply"
-%			\end{itemize}
+%
 %		\end{itemize}
 %		\begin{itemize}
 %			\item On the MDC
@@ -180,301 +208,298 @@ The Steps:
 %	\end{itemize}
 \end{itemize}
 
-\section{Initialize the camera}
-{\large \textbf{In the control room}}
-\begin{itemize}
-\item []
-\end{itemize}
-\begin{itemize}
-	\item \textbf{Connect Maxim DL to the camera}
-	\begin{itemize}
-		\item Open the camera control window.This button can be found on the toolbar. It can also be accessed by using the CRTL+W shortcut.
-		\item To connect Maxim DL to the camera, click the connect button in the Camera Control Window
-		\item Turn on the coolers by clicking the ``On'' button in the ``Coolers'' section.
-		\item In the ``Camera 1'' section, click ``Cooler'' to set the temperature.
-		\begin{itemize}
-			\item The temperature should be set to roughly -30$^\circ$C or lower. If the camera is unable to reach the set point, a box will pop up asking if you want to change the set point to something warmer; say Yes/OK if that happens.
-			\item Setting the temperature too low is better than too high.
-		\end{itemize}
-		\item {\large \textbf{Wait for the camera to reach the set point before taking calibration or science images.}}
-	\end{itemize}
-\end{itemize}
-	\begin{itemize}
-		\item {\large \textbf{Shooting Calibration Images: Flats}}
-		\begin{itemize}
-			\item {\large \textbf{In Maxim DL}}
-			\begin{itemize}
-				\item Open the camera control window, and click the ``Expose'' tab.
-				\item Check that Maxim DL to ``No Calibration'' (look under ``Options'' in the camera control window) so the frame type can be set to Flat.
-				\item Take a test image in one of the filters (a five or ten second exposure is fine). Click ``Start'' to begin the exposure.
-				\item When we shoot Flats, we aim for a average pixel count of 35,000 (except in the B filter). This can be seen by the Average Pixel Count in the information window. If the pixel count is not at 35,000, up the exposure time until 35,000 is reached. In the B filter a more realistic count rate is 10,000--15,000 counts; if those are the counts plan to take twice as many flats in the B filter.
-				\item To find the Information Window, go to the ``View'' menu and click on Information Window. Change the mode to area.
-				\item Take another test image in each filter to ensure the count is where we want it to be before shooting the whole sequence. Typical exposure times are 5-15 seconds for the I filter, 10-20 seconds for R, and 30 for V.
-				\item Click ``Auto Save'', set up the sequence, and then ``Start'' the sequence. Use this naming convention:
-				\begin{itemize}
-					\item Base name: `calibration' (or something like that).
-					\item type: flat
-					\item suffix: a single letter for the filter (e.g. B, V, R or I)
-				\end{itemize}
-			\end{itemize}
-		\end{itemize}
-	\end{itemize}
-	\begin{itemize}
-		\item  {\large \textbf{Shooting Calibration Images: Darks}}
-		\begin{itemize}
-			\item \textbf{For darks, be sure to turn off the lights in the dome.}
-			\item For the most part, darks are shot at the same exposure times as you expect to use in your light and flat frames. For each exposure you use, take darks of the same exposure time.
-			\item If you have longer exposures (several minutes) then your darks do not have to match exactly. They can be shorter if this is the case.
-			\item Again, use the ``Auto Save'' option so you can sit back and relax while the computer does its thing. For the suffix use ``DXXX'' where ``XXX'' is the length of the exposure. For example, for a 5 second exposure use ``D5'', for a 30 second exposure use ``D30'', and so on.
-			\item
-		\end{itemize}
-		\item {\large \textbf{Shooting Calibration Images: Bias}}
-		\begin{itemize}
-			\item In the Expose Tab in Maxim DL, you can set Bias from the pull down menu. It is recommended that you take 10 Biases.
-			\item Again, ``Auto Save'' is your friend. Use the suffix ``bias''. Don't forget to click Start after you set up the sequence.
-		\end{itemize}
-		\item {\large \textbf{Taking down the calibration set up.}}
-		\begin{itemize}
-			\item Remove the light diffusing cover from the top of the telescope.
-			\item If the lights used for taking flats are still in the dome, return them to the control room. They may be hot so be careful.
-	\end{itemize}
+\section{Set up ACP}
+\incontrol
 
-\end{itemize}
-\newpage
-\section{Initialize the Telescope Pointing}
 \begin{itemize}
-	\item Enable the motors.
-		\begin{itemize}
-			\item \textbf{For the telescope}
-			\begin{itemize}
-				\item In DFM TCS
-				\begin{itemize}
-					\item Go to the menu Telescope $\rightarrow$ rates.
-					\item Set the ``RA Rate'' to 15.05
-					\item Click ``Apply''
-				\end{itemize}
-				\item On the MDC (Motor Driver Chassis)
-				\begin{itemize}
-					\item Make sure the ``Halt Motors Button'' is in the out position.
-				\end{itemize}
-				\end{itemize}
-				\begin{itemize}
-					\item In DFM TCS
-					\begin{itemize}
-						\item Make sure that the RA is not changing and that the HA is changing.
-					\end{itemize}
-				\end{itemize}
-				\end{itemize}
-				\begin{itemize}
-					\item \textbf{For the Dome}
-					\begin{itemize}
-						\item In DFM TCS
-						\begin{itemize}
-							\item Go to the menu Telescope $\rightarrow$ Misc
-							\item Click the switches tab
-							\item Click the colored tab next to \emph{Dome} to turn it on. The tab should be green
-							\item Click the colored tab next to \emph{Dome} to turn it ``Track''. The tab should be green.
-							\item Click ``Apply''
-						\end{itemize}
-					\end{itemize}
-					\begin{itemize}
-						\item On the MDC
-						\begin{itemize}
-							\item Make sure the ``Auto Dome'' switch is up.
-						\end{itemize}
-					\end{itemize}
-					\begin{itemize}
-						\item In DFM TCS
-						\begin{itemize}
-							\item Make sure the ``Auto Dome'' indicator is green and "Dome Mode" is "TRACK"
-						\end{itemize}
-					\end{itemize}
-				\end{itemize}
-	\end{itemize}
-\begin{itemize}
-	\item \large \textbf{Opening the dome}
+	\item Connect the telescope: Go to the menu ``Telescope'' $\to$ ``Connect''.
+	\item Connect the camera: Go to the menu ``Camera'' $\to$ ``Connect''.
+	\item Click the ``Use Web Browser'' button in ACP. This should open a browser tab.
+	\item Check the the camera and telescope are connected.
 	\begin{itemize}
-		\item In the dome, there is a switch that needs to be plugged in. It is opposite the part of the dome that opens. Plug it in and give it a flip.
-		\item Once the top part of the slit starts opening, start opening the lower part of the dome by cranking the crank. We could figure out a way to automate this, but you need the exercise anyway.
-		\item When the top part of the slit is fully open and stops moving automatically, \textbf{unplug the dome connection}.
+		\item Under ``Telescope'' near the top of the page the RA, Dec and other boxes should have values in them. If they don't, try connecting by clicking the yellow ``Telescope''.
+		\item Under ``Imager'' near the top of the page the filter, binning and cooler boxes should have values in them. If not, try clicking the yellow ``Camera'' to connect to the camera.
 	\end{itemize}
 \end{itemize}
-\subsection{Pointing the Telescope}
+
+\section{Set up WinSCP}
 \begin{itemize}
-	\item \large \textbf{In Maxim DL}
-	\begin{itemize}
-		\item Take a 15 second exposure in the R filter. Save the image to the desktop.
-	\end{itemize}
-	\item \large \textbf{In Google Chrome}
-	\begin{itemize}
-		\item Go to \texttt{nova.astrometry.net}. Under advanced settings, choose these:
-		\begin{itemize}
-			\item \textbf{Scale}: custom
-			\begin{itemize}
-				\item \textbf{Units}: arcseconds per pixel (Under advanced settings)
-				\item \textbf{lower bound}: 0.5 (Under advanced settings)
-				\item \textbf{upper bound}: 0.6 (Under advanced settings)
-			\end{itemize}
-			\item Check the box marked \textbf{CRPIX center}. (Guess where this is)
-			\item Change "Downsample" to 4.
-			\item If the initial attempt to solve fails, try checking the box marked \textbf{use SExtractor}.
-			\item Occasionally, some of these options do not appear. To remedy this, simply scroll up, close the advanced options, and open them again. The desired options should appear.
-		\end{itemize}
-		\item Upload the image and go to the results page. You will need to wait a few minutes for the results.
-	\end{itemize}
-	\newpage
-	\item \large \textbf{In DFM TCS}
-	\begin{itemize}
-		\item Go to the menu Telescope $\rightarrow$ Initialization. Click the ``Telescope Position'' Tab.
-		\item Enter the RA (in hours, minutes, seconds) and Dec (Degrees, minutes, seconds) from astrometry.net.
-		\item Set the ``Equinox'' to 2000.0
-		\item Click ``Apply''.
-	\end{itemize}
+	\item Open WinSCP
+	\item Click ``Login'' for physics.mnstate.edu. Enter your username and password.
+	\item If you do not have an account, speak with one of the professors listed in Table \ref{tbl-phone-numbers}
+	\item \textbf{AFTER} ACP starts to take images look for a folder named for the date you are observing on following the \texttt{yyyymmdd} format. Example: February 29th, 2096 would be \texttt{20960229}.
+	\item Navigate to the feder data upload folder (\texttt{/data/feder/data/upload}) on the server, and create a folder following the naming convention \texttt{YYYY-MM-DD}. For example, November 1, 2020 would be \texttt{202-11-01}.
+	\item In WinSCP, navigate into the folder for the night you are observing on \emph{both} the local computer and the server.
+	\item To continuously sync the server and local computer, click the button with the green and red arrows in the toolbar to ``Keep remote computer up to date''.
+	\item You should probably push the button to minimize the sync window. This keeps the screen from looking too cluttered.
 \end{itemize}
+
+
+% \newpage
+% \section{Initialize the Telescope Pointing}
+% \begin{itemize}
+% 	\item Enable the motors.
+% 		\begin{itemize}
+% 			\item \textbf{For the telescope}
+% 			\begin{itemize}
+% 				\item In DFM TCS
+% 				\begin{itemize}
+% 					\item Go to the menu Telescope $\rightarrow$ rates.
+% 					\item Set the ``RA Rate'' to 15.05
+% 					\item Click ``Apply''
+% 				\end{itemize}
+% 				\item On the MDC (Motor Driver Chassis)
+% 				\begin{itemize}
+% 					\item Make sure the ``Halt Motors Button'' is in the out position.
+% 				\end{itemize}
+% 				\end{itemize}
+% 				\begin{itemize}
+% 					\item In DFM TCS
+% 					\begin{itemize}
+% 						\item Make sure that the RA is not changing and that the HA is changing.
+% 					\end{itemize}
+% 				\end{itemize}
+% 				\end{itemize}
+% 				\begin{itemize}
+% 					\item \textbf{For the Dome}
+% 					\begin{itemize}
+% 						\item In DFM TCS
+% 						\begin{itemize}
+% 							\item Go to the menu Telescope $\rightarrow$ Misc
+% 							\item Click the switches tab
+% 							\item Click the colored tab next to \emph{Dome} to turn it on. The tab should be green
+% 							\item Click the colored tab next to \emph{Dome} to turn it ``Track''. The tab should be green.
+% 							\item Click ``Apply''
+% 						\end{itemize}
+% 					\end{itemize}
+% 					\begin{itemize}
+% 						\item On the MDC
+% 						\begin{itemize}
+% 							\item Make sure the ``Auto Dome'' switch is up.
+% 						\end{itemize}
+% 					\end{itemize}
+% 					\begin{itemize}
+% 						\item In DFM TCS
+% 						\begin{itemize}
+% 							\item Make sure the ``Auto Dome'' indicator is green and "Dome Mode" is "TRACK"
+% 						\end{itemize}
+% 					\end{itemize}
+% 				\end{itemize}
+% 	\end{itemize}
+% \begin{itemize}
+% 	\item \large \textbf{Opening the dome}
+% 	\begin{itemize}
+% 		\item In the dome, there is a switch that needs to be plugged in. It is opposite the part of the dome that opens. Plug it in and give it a flip.
+% 		\item Once the top part of the slit starts opening, start opening the lower part of the dome by cranking the crank. We could figure out a way to automate this, but you need the exercise anyway.
+% 		\item When the top part of the slit is fully open and stops moving automatically, \textbf{unplug the dome connection}.
+% 	\end{itemize}
+% \end{itemize}
+% \subsection{Pointing the Telescope}
+% \begin{itemize}
+% 	\item \large \textbf{In Maxim DL}
+% 	\begin{itemize}
+% 		\item Take a 15 second exposure in the R filter. Save the image to the desktop.
+% 	\end{itemize}
+% 	\item \large \textbf{In Google Chrome}
+% 	\begin{itemize}
+% 		\item Go to \texttt{nova.astrometry.net}. Under advanced settings, choose these:
+% 		\begin{itemize}
+% 			\item \textbf{Scale}: custom
+% 			\begin{itemize}
+% 				\item \textbf{Units}: arcseconds per pixel (Under advanced settings)
+% 				\item \textbf{lower bound}: 0.5 (Under advanced settings)
+% 				\item \textbf{upper bound}: 0.6 (Under advanced settings)
+% 			\end{itemize}
+% 			\item Check the box marked \textbf{CRPIX center}. (Guess where this is)
+% 			\item Change "Downsample" to 4.
+% 			\item If the initial attempt to solve fails, try checking the box marked \textbf{use SExtractor}.
+% 			\item Occasionally, some of these options do not appear. To remedy this, simply scroll up, close the advanced options, and open them again. The desired options should appear.
+% 		\end{itemize}
+% 		\item Upload the image and go to the results page. You will need to wait a few minutes for the results.
+% 	\end{itemize}
+% 	\newpage
+% 	\item \large \textbf{In DFM TCS}
+% 	\begin{itemize}
+% 		\item Go to the menu Telescope $\rightarrow$ Initialization. Click the ``Telescope Position'' Tab.
+% 		\item Enter the RA (in hours, minutes, seconds) and Dec (Degrees, minutes, seconds) from astrometry.net.
+% 		\item Set the ``Equinox'' to 2000.0
+% 		\item Click ``Apply''.
+% 	\end{itemize}
+% \end{itemize}
 
 \newpage
 
-\chapter{Focusing the Telescope}
-\label{ch:focusing}
-It should go without saying that this is a particularly important part of the procedure. An improperly focused telescope results in bad images, and bad images results in frustration. Frustration leads to anger, anger leads to hate, and hate leads to the dark side.
+\chapter{Using ACP to do observations} % (fold)
+\label{cha:using_acp_to_do_observations}
 
-To estimate the focus value, use this formula: $f \approx ???$, where $T$ is the air temperature in the dome (in Fahrenheit) and $f$ is the approixmate focus value to use in DFM TCS below. Use this \emph{only} if the initial focus is very bad.
-
-\begin{itemize}
-	\item Open The Sky and connect it to the telescope by clicking the ``Telescope'' tab on the left bar, then go to setup, and connect to telescope.
-	\item Slew to a magnitude 5-6 star.
-	\begin{itemize}
-		\item In The Sky, pick a star near your location. Clicking on it will show its magnitude. If the magnitude is between 5 and 6, click the green telescope button to slew to it.
-	\end{itemize}
-	\item {\large \textbf{In Maxim DL} (in the Expose tab)}
-	\begin{itemize}
-		\item Reset to full frame (i.e. make sure Subframe ``On'' option is \emph{un}checked). This may not be needed.
-		\item Take a 1 second exposure in the R filter.
-	\end{itemize}
-	\begin{itemize}
-		\item Once you have confirmed that the star is in the full frame, you have two options:
-		\begin{enumerate}
-			\item Turn on subframe and click the ``Auto Subframe''. You can confirm the position of the star by mousing over it and seeing if the RA and Dec match. The subframe box is in the same window used to take images, near the center. There is an option for auto subframe, which tries to automatically find the star, or mouse subframe, where you select the star yourself.
-			\item (MOVE TO TROUBLESHOOTING) Turn on subframe, click ``Mouse'', and selecting the star manually.
-		\end{enumerate}
-		\item Click on ``Continuous'' and then ``Start''
-	\end{itemize}
-	\item {\large \textbf{Adjusting the focus in DFM TCS}}
-	\begin{itemize}
-		\item Go to the menu Telescope $\rightarrow$ Misc
-		\item Click on the Focus/Harmonic tab.
-		\item Make sure the focus is in roughly the right range. You can calculate
-		\begin{itemize}
-			\item \emph{In Maxim DL}, take a look at the Full Width Half Max (FWHM). We want the FWHM to be as close to 4.5 pixels as possible. 5 - 6 pixels is acceptable. Larger values than this should be avoided if possible; some times it isn't possible, though.
-			\item Change the focus in increments of 50 until you are close to the range you want. Then change in increments of 25.
-		\end{itemize}
-	\end{itemize}
-	\item {\large \textbf{When you are done focusing}}
-	\begin{itemize}
-		\item Once you have the FWHM as small as possible, note it and the final focus setting somewhere, preferably the observing log.
-		\item In Maxim DL
-		\begin{itemize}
-			\item Camera Control window, click ``Stop''. (If it won't stop try the next step and then stopping.)
-			\item Change the mode back to single.
-			\item \emph{Uncheck the ``subframe'' box}.
-		\end{itemize}
-	\end{itemize}
-\end{itemize}
-
-\chapter{Shooting}\label{ch:shooting}
-
-If the previous steps have been followed, the telescope should now be ready for imaging. Reminder: calibration images do not have to be shot before the science images.
+We use ACP to handle these things:
 
 \begin{itemize}
-	\item {\large \textbf{Pointing the telescope with DFM TCS}}
-	\begin{itemize}
-		\item Find the Telescope $\rightarrow$ Movement. Enter the coordinates you want to point the telescope to. {\large \emph{Make sure the Epoch is set to 2000.0.}}
-	\end{itemize}
-	\item {\large \textbf{Taking the Images}}
-	\begin{itemize}
-		\item Ensure that the sub-frame box is unchecked.
-		\item In the Camera Control Window, there is an option to connect Maxim DL to the telescope. This helps by speeding up the processing later on.
-		\item To make life easier, use the autosave feature in Maxim DL. This largely automates the process, which gives you time to relax and get other things done while the computer does all the hard work.
-		\begin{itemize}
-			\item Click the ``Auto Save'' button.
-			\item Set the autosave name. This should be the name of the object your are observing.
-			\item Set up the sequence of shots that you want Maxim DL to shoot.
-			\item Click OK and then start.
-			\item Busy yourself with something. Depending on the images being taken, this could take some time.
-		\end{itemize}
-	\end{itemize}
+	\item Tell the telescope software where the telescope is actually pointing at the beginning of observations.
+	\item Focus the telescope.
+	\item Move the telescope to the object or objects we observe.
+	\item Take images of those objects.
+	\item Take calibration images: bias, dark, flat.
 \end{itemize}
 
-\newpage
+ACP does those things by reading in a plan, which is a text file listing what you want ACP to do.
+% chapter using_acp_to_do_observations (end)
 
-\chapter{Making the Observing Log}\label{ch:log}
-All good scientists know that you have to record what you do, and under what conditions. Failure to do so is tantamount to murder of the scientific method. In your observing log, make note of the following things:
-\begin{itemize}
-	\item The date you observed.
-	\item The temperature and focus settings for the night.
-	\item Objects observed,
-	\item Any problems encountered during the night and how they were fixed, if they were.
-\end{itemize}
 
-Post your log to the \href{(http://astronomy.mnstate.edu/Feder_Observatory/}{Feder Observatory Blog }. If you do not have access to the Blog, e-mail your Observing Log to someone who does. A safe bet is to e-mail the Feder Users mailing list (feder\_users@lists.mnstate.edu). Someone will take care of it.
+% \chapter{Focusing the Telescope}
+% \label{ch:focusing}
+% It should go without saying that this is a particularly important part of the procedure. An improperly focused telescope results in bad images, and bad images results in frustration. Frustration leads to anger, anger leads to hate, and hate leads to the dark side.
+
+% To estimate the focus value, use this formula: $f \approx ???$, where $T$ is the air temperature in the dome (in Fahrenheit) and $f$ is the approixmate focus value to use in DFM TCS below. Use this \emph{only} if the initial focus is very bad.
+
+% \begin{itemize}
+% 	\item Open The Sky and connect it to the telescope by clicking the ``Telescope'' tab on the left bar, then go to setup, and connect to telescope.
+% 	\item Slew to a magnitude 5-6 star.
+% 	\begin{itemize}
+% 		\item In The Sky, pick a star near your location. Clicking on it will show its magnitude. If the magnitude is between 5 and 6, click the green telescope button to slew to it.
+% 	\end{itemize}
+% 	\item {\large \textbf{In Maxim DL} (in the Expose tab)}
+% 	\begin{itemize}
+% 		\item Reset to full frame (i.e. make sure Subframe ``On'' option is \emph{un}checked). This may not be needed.
+% 		\item Take a 1 second exposure in the R filter.
+% 	\end{itemize}
+% 	\begin{itemize}
+% 		\item Once you have confirmed that the star is in the full frame, you have two options:
+% 		\begin{enumerate}
+% 			\item Turn on subframe and click the ``Auto Subframe''. You can confirm the position of the star by mousing over it and seeing if the RA and Dec match. The subframe box is in the same window used to take images, near the center. There is an option for auto subframe, which tries to automatically find the star, or mouse subframe, where you select the star yourself.
+% 			\item (MOVE TO TROUBLESHOOTING) Turn on subframe, click ``Mouse'', and selecting the star manually.
+% 		\end{enumerate}
+% 		\item Click on ``Continuous'' and then ``Start''
+% 	\end{itemize}
+% 	\item {\large \textbf{Adjusting the focus in DFM TCS}}
+% 	\begin{itemize}
+% 		\item Go to the menu Telescope $\rightarrow$ Misc
+% 		\item Click on the Focus/Harmonic tab.
+% 		\item Make sure the focus is in roughly the right range. You can calculate
+% 		\begin{itemize}
+% 			\item \emph{In Maxim DL}, take a look at the Full Width Half Max (FWHM). We want the FWHM to be as close to 4.5 pixels as possible. 5 - 6 pixels is acceptable. Larger values than this should be avoided if possible; some times it isn't possible, though.
+% 			\item Change the focus in increments of 50 until you are close to the range you want. Then change in increments of 25.
+% 		\end{itemize}
+% 	\end{itemize}
+% 	\item {\large \textbf{When you are done focusing}}
+% 	\begin{itemize}
+% 		\item Once you have the FWHM as small as possible, note it and the final focus setting somewhere, preferably the observing log.
+% 		\item In Maxim DL
+% 		\begin{itemize}
+% 			\item Camera Control window, click ``Stop''. (If it won't stop try the next step and then stopping.)
+% 			\item Change the mode back to single.
+% 			\item \emph{Uncheck the ``subframe'' box}.
+% 		\end{itemize}
+% 	\end{itemize}
+% \end{itemize}
+
+% \chapter{Shooting}\label{ch:shooting}
+
+% If the previous steps have been followed, the telescope should now be ready for imaging. Reminder: calibration images do not have to be shot before the science images.
+
+% \begin{itemize}
+% 	\item {\large \textbf{Pointing the telescope with DFM TCS}}
+% 	\begin{itemize}
+% 		\item Find the Telescope $\rightarrow$ Movement. Enter the coordinates you want to point the telescope to. {\large \emph{Make sure the Epoch is set to 2000.0.}}
+% 	\end{itemize}
+% 	\item {\large \textbf{Taking the Images}}
+% 	\begin{itemize}
+% 		\item Ensure that the sub-frame box is unchecked.
+% 		\item In the Camera Control Window, there is an option to connect Maxim DL to the telescope. This helps by speeding up the processing later on.
+% 		\item To make life easier, use the autosave feature in Maxim DL. This largely automates the process, which gives you time to relax and get other things done while the computer does all the hard work.
+% 		\begin{itemize}
+% 			\item Click the ``Auto Save'' button.
+% 			\item Set the autosave name. This should be the name of the object your are observing.
+% 			\item Set up the sequence of shots that you want Maxim DL to shoot.
+% 			\item Click OK and then start.
+% 			\item Busy yourself with something. Depending on the images being taken, this could take some time.
+% 		\end{itemize}
+% 	\end{itemize}
+% \end{itemize}
+
+% \newpage
+
+% \chapter{Making the Observing Log}\label{ch:log}
+% All good scientists know that you have to record what you do, and under what conditions. Failure to do so is tantamount to murder of the scientific method. In your observing log, make note of the following things:
+% \begin{itemize}
+% 	\item The date you observed.
+% 	\item The temperature and focus settings for the night.
+% 	\item Objects observed,
+% 	\item Any problems encountered during the night and how they were fixed, if they were.
+% \end{itemize}
+
+% Post your log to the \href{(http://astronomy.mnstate.edu/Feder_Observatory/}{Feder Observatory Blog }. If you do not have access to the Blog, e-mail your Observing Log to someone who does. A safe bet is to e-mail the Feder Users mailing list (feder\_users@lists.mnstate.edu). Someone will take care of it.
 
 \newpage
 
 \chapter{Shutdown}\label{ch:shutdown}
+
 At the end of the night, shut the whole thing down or face the wrath of people who are concerned for the longevity of the observatory if it is mistreated.
+
+\incontrol
 \begin{itemize}
-	\item {\large \textbf{In the control room}}
+	\item Close the ACP browser tab.
+	\item Disconnect the telescope from ACP: ``Telescope'' $\to$ ``Disconnect''
+	\item Disconnect the camera from ACP: ``Camera'' $\to$ ``Disconnect''
+	\item Quit ACP
+	\item Quit Focus Max
+	\item In the Maxim DL Camera Control window, turn off camera cooler and disconnect the camera:
+		\begin{itemize}
+			\item Click the ``Setup'' tab.
+			\item Turn the cooler off.
+			\item Disconnect the camera.
+		\end{itemize}
+	\item Quit Maxim DL.
+	\item Return the telescope to Zenith:
 	\begin{itemize}
-		\item Return the telescope to Zenith:
-			\begin{itemize}
-				\item IN DFM TCS, go to Telescope $\rightarrow$ Rates, and set the RA rate to 0.00. Check to make sure the RA \emph{is changing}.
-				\item in DFM TCS, go to Telescope $\rightarrow$ Movement $\rightarrow$ Offset/Zenith and click the ``Apply'' next to ``Slew to Zenith Position'', then ``Start Slew''.
-			\end{itemize}
-		\item Return the Dome to its home position:
-			\begin{itemize}
-				\item Change Dome to ``Home''. To do this, in DFM, go to the menu Telescope $\rightarrow$ Misc $\rightarrow$ Switches. Set ``Dome'' to Home then Apply.
-				\item Wait until the dome azimuth displayed in DFM TCS is 300 degrees, the home position of the dome.
-				\item Click the colored tab next to \emph{Auto Dome} so that it is ``Off'' (red). Apply, then close the switches window.
-			\end{itemize}
-		\item Turn the MDC toggle switch off.
-		\item Quit DFM TCS.
-		\item In the Maxim DL Camera Control window, turn off camera cooler and disconnect the camera:
-			\begin{itemize}
-				\item Click the ``Setup'' tab.
-				\item Turn the cooler off.
-				\item Disconnect the camera.
-			\end{itemize}
-		\item Quit Maxim DL.
-		\item Turn the filter wheel off.
+		\item in DFM TCS, go to Telescope $\rightarrow$ Movement $\rightarrow$ Offset/Zenith and click the ``Apply'' next to ``Slew to Zenith Position'', then ``Start Slew''.
+		\item Close the settings window.
+	\end{itemize}
+	\item Return the Dome to its home position:
+		\begin{itemize}
+			\item Change Dome to ``Home''. To do this, in DFM, go to the menu Telescope $\rightarrow$ Misc $\rightarrow$ Switches.
+			\item Click the colored box next to the top ``Dome'' indicator. It should turn red and read ``Home''. Click Apply.
+			\item Wait until the dome azimuth displayed in DFM TCS is 299 degrees, the home position of the dome, and the main TCS window displays a ``DOME HOME'' message in red.
+			\item Click the colored box next to the bottom \emph{Auto Dome} so that it is ``Off'' (red). Apply, then close the switches window.
+		\end{itemize}
+		\item Quit TCS.
+		\item After TCS has quit, turn the MDC toggle switch ``MTR Driver Chassis'' off (down).
 	\end{itemize}
 
+\indome
 
-\end{itemize}
 \begin{itemize}
-	\item {\large \textbf{In the Dome}}
-	\begin{itemize}
-		\item Replace the cover on the telescope.
-		\item Close the bottom part of the dome.
-		\item Close the top part of the dome.
-		\item Unplug the camera. Bring power supply inside.
-		\item Turn off the terminal power supply.
-		\item Turn off the lights.
-	\end{itemize}
+	\item Replace the cover on the telescope.
+	\item Close the bottom part of the dome.
+	\item Close the top part of the dome.
+	\item Unplug the connector between the switch and dome for the upper part of the slit.
+	\item Turn off the camera/filter wheel power strip.
+	\item Unplug the camera/filter wheel power strip.
+	\item Unplug the USB extender under the stairs
+		\begin{itemize}
+			\item Unplug the power supply from the wall.
+			\item Unplug the yellow or blue ethernet cable.
+		\end{itemize}
+	\item Turn off the lights under the stairs and in the observatory.
+	\item \textbf{\emph{Push the door hard when you close it to make sure it closes all the way.}}
+\end{itemize}
 
-	\item {\large \textbf{In the control room}}
-	\begin{itemize}
-		\item Ensure all the images have transferred to the server.
-		\item Shutdown the PC.
-		\item Turn off surge protectors.
-	\end{itemize}
+\incontrol
 
-\item {\large \textbf{As you leave}}
 \begin{itemize}
-	\item Turn on the outside lights.
+	\item Ensure all the images have transferred by WinSCP to the server. Once they have, close WinSCP.
+	\item Shutdown the PC.
+	\item Unplug both cables from the USB extender on top of the MDC.
 \end{itemize}
+
+\noindent
+\large \textbf{As you leave}
+\begin{itemize}
+	\item \textbf{Turn on the outside lights.}
 \end{itemize}
+
 \newpage
-\chapter{Troubleshooting}
+\chapter{Troubleshooting [outdated]}
 Occasionally, you will run into some errors. Hopefully, the solution to your problem can be found in this section.
 
 \noindent\textbf{Telescope not returning to zenith}
@@ -488,11 +513,83 @@ Occasionally, you will run into some errors. Hopefully, the solution to your pro
 \begin{itemize}
 	\item The manufacturer's website claims that this error appears when the filter needs to be cleaned. It also appears when the filter wheel cannot move. Check the filter wheel and see if it is being blocked. It is also not unlikely that it is lacking power.
 \end{itemize}
+
 \noindent \textbf{Dome not tracking}
 \begin{itemize}
 	\item Ensure that the ``Auto Dome'' switch on the MDC is turned up. If you make this mistake enough, you might be Andy Block.
 	\item Check that the dome is in the correct home position when you start up. The control system assumes that the dome is actually at azimuth 300$^\circ$ when it starts.
 \end{itemize}
+
+\chapter{Manual calibration images and dome flats}\label{ch:manualcalib}
+
+\section{Dome flats}
+\label{sec:dome_flats}
+
+\subsection{Set up}
+\indome
+\begin{itemize}
+	\item The dome \textbf{should be closed} for dome flats.
+	\item The telescope should be at zenith (pointing straight up) for dome flats.
+	\item Remove the yellow ``shower cap'' from the telescope if it is still on. Replace it with the light diffuser on the table. The diffuser has metallic tape around its sides and white sheets on the top.
+	\item Position the lights needed for taking flats. There is a halogen lamp that should be placed on the step ladder and aimed at the white screen in the dome.
+\end{itemize}
+
+\subsection{Shooting the dome flats} % (fold)
+\label{sub:shooting_the_dome_flats}
+
+% subsubsection shooting_the_dome_flats (end)
+\incontrol
+\begin{itemize}
+	\item {\large \textbf{Shooting Calibration Images: Flats}}
+	\begin{itemize}
+		\item {\large \textbf{In Maxim DL}}
+		\begin{itemize}
+			\item Open the camera control window, and click the ``Expose'' tab.
+			\item Check that Maxim DL to ``No Calibration'' (look under ``Options'' in the camera control window) so the frame type can be set to Flat.
+			\item Take a test image in one of the filters (a five or ten second exposure is fine). Click ``Start'' to begin the exposure.
+			\item When we shoot Flats, we aim for a average pixel count of 35,000 (except in the B filter). This can be seen by the Average Pixel Count in the information window. If the pixel count is not at 35,000, up the exposure time until 35,000 is reached. In the B filter a more realistic count rate is 10,000--15,000 counts; if those are the counts plan to take twice as many flats in the B filter.
+			\item To find the Information Window, go to the ``View'' menu and click on Information Window. Change the mode to area.
+			\item Take another test image in each filter to ensure the count is where we want it to be before shooting the whole sequence. Typical exposure times are 5-15 seconds for the I filter, 10-20 seconds for R, and 30 for V.
+			\item Click ``Auto Save'', set up the sequence, and then ``Start'' the sequence. Use this naming convention:
+			\begin{itemize}
+				\item Base name: `calibration' (or something like that).
+				\item type: flat
+				\item suffix: a single letter for the filter (e.g. B, V, R or I)
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+\subsection{Taking down the flat setup}
+\indome
+
+\begin{itemize}
+	\item Remove the light diffusing cover from the top of the telescope.
+	\item Unplug the lights for flats and put them back where you found them. They may be hot so be careful.
+	\item Open the dome if you will be observing. Otherwise, follow the shutdown procedures.
+\end{itemize}
+
+\section{Darks and bias in MaxIm DL} % (fold)
+\label{sec:darks_in_maxim_dl}
+\incontrol
+
+\begin{itemize}
+	\item  {\large \textbf{Shooting Calibration Images: Darks}}
+	\begin{itemize}
+		\item emph{\textbf{For darks, be sure to turn off the lights in the dome.}}
+		\item For the most part, darks are shot at the same exposure times as you expect to use in your light and flat frames. For each exposure you use, take darks of the same exposure time.
+		\item If you have longer exposures (several minutes) then your darks do not have to match exactly. They can be shorter if this is the case.
+		\item Again, use the ``Auto Save'' option so you can sit back and relax while the computer does its thing. For the suffix use ``DXXX'' where ``XXX'' is the length of the exposure. For example, for a 5 second exposure use ``D5'', for a 30 second exposure use ``D30'', and so on.
+	\end{itemize}
+	\item {\large \textbf{Shooting Calibration Images: Bias}}
+	\begin{itemize}
+		\item emph{\textbf{For bias images, be sure to turn off the lights in the dome.}}
+		\item In the Expose Tab in Maxim DL, you can set Bias from the pull down menu. It is recommended that you take 10 Biases.
+		\item Again, ``Auto Save'' is your friend. Use the suffix ``bias''. Don't forget to click Start after you set up the sequence.
+	\end{itemize}
+\end{itemize}
+% section darks_in_maxim_dl (end)
+
 
 % \chapter{Figures}
 
